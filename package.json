@@ -5,7 +5,7 @@
   "main": "examples/node_test.js",
   "scripts": {
     "start": "node examples/node_test.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node --test test/*.test.js"
   },
   "author": "Huibean Luo",
   "license": "MIT",

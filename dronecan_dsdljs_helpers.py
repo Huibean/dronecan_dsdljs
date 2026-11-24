@@ -60,12 +60,10 @@ def generate_js_class(message, fields, serviceTypeId=None):
     js_code += f"    static FULL_NAME = '{message.full_name}';\n"
     js_code += f"    static CONSTANTS = {constants};\n"
 
-    if getattr(message, 'request_fields', None) is not None:
-        # fields = message.request_fields
+    if serviceTypeId == 'request':
         js_code += f"    static MAX_BIT_LEN = {message.get_max_bitlen_request()};\n"
         js_code += f"    static MIN_BIT_LEN = {message.get_min_bitlen_request()};\n"
-    elif getattr(message, 'response_fields', None) is not None:
-        # fields = message.response_fields
+    elif serviceTypeId == 'response':
         js_code += f"    static MAX_BIT_LEN = {message.get_max_bitlen_response()};\n"
         js_code += f"    static MIN_BIT_LEN = {message.get_min_bitlen_response()};\n"
     elif getattr(message, 'fields', None) is not None:
